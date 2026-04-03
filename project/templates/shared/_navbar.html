@@ -1,0 +1,19 @@
+{% load static %}
+
+<nav class="nav">
+    <div class="nav-item {% if request.resolver_match.url_name == 'mainpage' %}active{% endif %}"
+         onclick="location.href='{% url 'main:mainpage' %}'">
+        <div class="nav-icon">
+            <img src="{% static 'images/icon-food.png' %}" alt="홈 아이콘" class="nav-icon-img">
+        </div>
+        <span class="nav-label">홈</span>
+    </div>
+
+    <div class="nav-item {% if request.resolver_match.url_name == 'blogpage' %}active{% endif %}"
+         onclick="location.href='{% url 'main:blogpage' %}'">
+        <div class="nav-icon">
+            <img src="{% static 'images/icon-book.png' %}" alt="게시판 아이콘" class="nav-icon-img">
+        </div>
+        <span class="nav-label">게시판</span>
+    </div>
+</nav>
