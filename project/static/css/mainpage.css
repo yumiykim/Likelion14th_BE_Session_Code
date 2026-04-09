@@ -1,8 +1,10 @@
+/*project/static/css/mainpage.css*/
+
 /* 기본 스타일 */
 body {
   margin: 0;
   font-family: Pretendard, sans-serif;
-  background: #F5F5F5;
+  background: #f5f5f5;
   color: #111;
 }
 
@@ -12,7 +14,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 16px;
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 
 .header-left {
@@ -28,7 +30,7 @@ body {
 
 .brand-name {
   font-size: 32px;
-  color: #FB6327;
+  color: #fb6327;
   font-weight: 400;
 }
 
@@ -40,7 +42,7 @@ body {
 .header-right .icon {
   width: 24px;
   height: 24px;
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 
 /* 네비게이션 */
@@ -49,7 +51,7 @@ body {
   gap: 40px; /* 피그마 기준 */
   padding: 0 16px;
   border-bottom: 1px solid #ddd;
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 
 .nav-item {
@@ -62,6 +64,14 @@ body {
   font-size: 24px;
   font-weight: 500;
   transition: color 0.2s;
+}
+
+.nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .nav-item.active {
@@ -93,7 +103,6 @@ body {
   font-weight: 500;
 }
 
-
 /* 메인 */
 .main {
   padding: 40px 16px;
@@ -101,18 +110,29 @@ body {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, 294px);
+  gap: 60px;
+  /*justify-content: center;*/
 }
 
 .card {
+  width: 294px;
+  height: 296px;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   padding: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.card-header {
+  font-size: 16px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
 }
 
 .card-content h2 {
@@ -127,9 +147,14 @@ body {
   margin: 0;
 }
 
+.card-summary p {
+  font-size: 20px;
+}
+
 .card-footer {
   display: flex;
   flex-direction: column;
+  justify-content: right;
   gap: 8px;
 }
 
@@ -154,7 +179,7 @@ body {
 form {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   padding: 32px;
   display: flex;
   flex-direction: column;
@@ -198,7 +223,16 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: #FB6327;
+  border-color: #fb6327;
+}
+
+.add-button {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
 }
 
 /* 버튼 */
@@ -207,12 +241,14 @@ button {
   padding: 14px;
   border-radius: 6px;
   border: none;
-  background: #FB6327;
+  background: #fb6327;
   color: white;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition:
+          background 0.2s ease,
+          transform 0.1s ease;
 }
 
 button:hover {
@@ -223,7 +259,6 @@ button:active {
   transform: scale(0.98);
 }
 
-
 /* ===== 상세 페이지 ===== */
 
 .detail-wrapper {
@@ -232,7 +267,7 @@ button:active {
   background: #fff;
   padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* 제목 */
@@ -264,6 +299,58 @@ button:active {
 
 /* 강조 포인트 */
 .detail-footer span:first-child {
-  color: #FB6327;
+  color: #fb6327;
   font-weight: 500;
+}
+
+
+/* ===== 마이페이지 ===== */
+
+.mypage-wrapper {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* 프로필 카드 */
+.profile-card {
+  background: #fff;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  background: #eee;
+  border-radius: 50%;
+}
+
+.profile-info h2 {
+  font-size: 28px;
+  margin: 0 0 8px 0;
+}
+
+.profile-email {
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.profile-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #767676;
+}
+
+/* 섹션 */
+.mypage-section h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
 }

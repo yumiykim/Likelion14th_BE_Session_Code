@@ -18,6 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # admin 페이지 실습이랑 createsuper 유저 실습 먼저 진행하기.
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('users/', include('users.urls')),
 ]

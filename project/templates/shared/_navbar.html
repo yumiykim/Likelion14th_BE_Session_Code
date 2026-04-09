@@ -1,5 +1,25 @@
 {% load static %}
 
+<header class="header">
+    <div class="header-left">
+        <img src="{% static 'images/icon-logo.png' %}" alt="로고" class="logo">
+    </div>
+    <div class="header-right">
+        {% if user.is_authenticated %}
+            {#                로그인 시 보이는 요소 => 로그아웃/마이페이지 버튼#}
+            <div>{{ user.username }}님 안녕하세요!</div>
+            <div>
+                <div><a href="{% url 'accounts:logout' %}" >로그아웃</a></div>
+                <div><a href="{% url 'users:mypage' request.user.id %}">마이페이지</a></div>
+            </div>
+        {% else %}
+            {#                로그아웃 시 보이는 요소 => 로그인/회원가입 버튼#}
+            <div><a href="{% url 'accounts:login' %}">로그인</a></div>
+            <div><a href="{% url 'accounts:signup' %}">회원가입</a></div>
+        {% endif %}
+    </div>
+</header>
+
 <nav class="nav">
     <div class="nav-item {% if request.resolver_match.url_name == 'mainpage' %}active{% endif %}">
         <a class="nav-item" href="{% url 'main:mainpage' %}">

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="mypage-wrapper">
+
+        <!-- 프로필 카드 -->
+        <div class="profile-card">
+            <div class="profile-left">
+                <div class="profile-image"></div>
+            </div>
+            <div class="profile-info">
+                <h2>{{ user.username }}</h2>
+{#                <p class="profile-email">{{ user.email }}</p>#}
+{#                <div class="profile-meta">#}
+{#                    <span>작성 글 {{ blogs.count }}개</span>#}
+{#                    <span>가입일 {{ user.date_joined|date:"Y.m.d" }}</span>#}
+{#                </div>#}
+            </div>
+        </div>
+
+        <!-- 내가 작성한 글 : 이거는 할지 말지 정해야 함-->
+        <div class="mypage-section">
+            <h3>내가 작성한 글</h3>
+
+            <div class="card-grid">
+                {% for blog in blogs %}
+                    <div class="card" onclick="location.href='{% url 'main:detail' blog.id %}'">
+                        <div class="card-content">
+                            <h2>{{ blog.title }}</h2>
+                            <p>{{ blog.content|truncatechars:80 }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="divider"></div>
+                            <span>{{ blog.pub_date }}</span>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>작성한 글이 없습니다.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
