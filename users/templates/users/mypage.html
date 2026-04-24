@@ -19,31 +19,12 @@
                 <p class="profile-email">{{ profile_user.username }}</p>
                 <div class="profile-meta">
                     <span>전공 {{ profile.major|default:"미입력" }}</span>
+                    <span>작성 글 {{ blogs.count }}개</span>
                 </div>
             </div>
         </div>
 
-{#        <!-- 내가 작성한 글 -->#}
-{#        <div class="mypage-section">#}
-{#            <h3>내가 작성한 글</h3>#}
-{##}
-{#            <div class="card-grid">#}
-{#                {% for blog in blogs %}#}
-{#                    <div class="card" onclick="location.href='{% url 'main:detail' blog.id %}'">#}
-{#                        <div class="card-content">#}
-{#                            <h2>{{ blog.title }}</h2>#}
-{#                            <p>{{ blog.content|truncatechars:80 }}</p>#}
-{#                        </div>#}
-{#                        <div class="card-footer">#}
-{#                            <div class="divider"></div>#}
-{#                            <span>{{ blog.pub_date }}</span>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    {% empty %}#}
-{#                    <p>작성한 글이 없습니다.</p>#}
-{#                {% endfor %}#}
-{#            </div>#}
-{#        </div>#}
+        <!-- 내가 작성한 글 : 생략(다음 세션으로)-->
 
     </div>
 

@@ -32,6 +32,7 @@ def signup(request):
                 username=request.POST['username'],
                 password=request.POST['password'],
             )
+            # 1:1 필드 다음에 실습 진행
             nickname = request.POST['nickname']
             major = request.POST['major']
             profile_image = request.FILES.get('profile_image')
