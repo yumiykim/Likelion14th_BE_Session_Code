@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
 from django.contrib import auth
+from django.shortcuts import redirect, render
 from .models import Profile
 
 # Create your views here.
@@ -25,16 +25,23 @@ def logout(request):
     auth.logout(request)
     return redirect('main:blogpage')
 
-def sighup(request):
+def signup(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['confirm']:
-            newuser = User.objects.create_user(request.POST['username'], request.POST['password'])
-
-            # 여기도 1:1 필드 다음에 실습 진행!
+            newuser = User.objects.create_user(
+                username=request.POST['username'],
+                password=request.POST['password'],
+            )
             nickname = request.POST['nickname']
             major = request.POST['major']
+            profile_image = request.FILES.get('profile_image')
 
-            profile = Profile(user=newuser, nickname=nickname, major=major)
+            profile = Profile(
+                user=newuser,
+                nickname=nickname,
+                major=major,
+                profile_image=profile_image,
+            )
             profile.save()
 
             auth.login(request, newuser)
