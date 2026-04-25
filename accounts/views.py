@@ -49,6 +49,3 @@ def signup(request):
             return redirect('main:blogpage')
 
     return render(request, 'accounts/signup.html')
-
-def signinpage(request):
-    render(request, 'main/login.html')
