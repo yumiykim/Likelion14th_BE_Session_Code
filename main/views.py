@@ -37,10 +37,10 @@ def detail(request, blog_id):
     return render(request, 'main/detail.html', {'blog': blog})
 
 def edit(request, blog_id):
-    edit_blog = get_object_or_404(Blog, pk=blog_id)
-
     if not request.user.is_authenticated:
         return redirect('accounts:login')
+    
+    edit_blog = get_object_or_404(Blog, pk=blog_id)
 
     if edit_blog.writer != request.user.username:
         return redirect('main:detail', edit_blog.id)
@@ -48,10 +48,10 @@ def edit(request, blog_id):
     return render(request, 'main/edit.html', {"blog": edit_blog})
 
 def update(request, blog_id):
-    update_blog = get_object_or_404(Blog, pk=blog_id)
-
     if not request.user.is_authenticated:
         return redirect('accounts:login')
+    
+    update_blog = get_object_or_404(Blog, pk=blog_id)
 
     if update_blog.writer != request.user.username:
         return redirect('main:detail', update_blog.id)
@@ -65,10 +65,10 @@ def update(request, blog_id):
     return redirect('main:detail', update_blog.id)
 
 def delete(request, blog_id):
-    delete_blog = get_object_or_404(Blog, pk=blog_id)
-
     if not request.user.is_authenticated:
         return redirect('accounts:login')
+    
+    delete_blog = get_object_or_404(Blog, pk=blog_id)
 
     if delete_blog.writer != request.user.username:
         return redirect('main:detail', delete_blog.id)
